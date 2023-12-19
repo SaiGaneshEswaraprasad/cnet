@@ -1,6 +1,6 @@
 import socket
 s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-port=5003
+port=5004
 s.connect(socket.gethostname(),port)
 print("Connected")
 z="hello from client"
