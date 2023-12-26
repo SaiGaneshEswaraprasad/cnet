@@ -12,6 +12,11 @@ print(f"Connected to {adr} established")
 while True:
     message_to_send = input("Server: ")
     c.send(bytes(message_to_send, "utf-8"))
+
+    if message_to_send.lower() == "bye":
+        print(f"Connection with {adr} closed.")
+        break
+
     data = c.recv(1024)
     if not data:
         break
