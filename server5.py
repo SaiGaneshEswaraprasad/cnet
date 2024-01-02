@@ -1,10 +1,9 @@
 import socket
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-port=5004
-server_socket.bind(('localhost', port))
-server_socket.listen(5)
-print("Server listening on port 5004...")
+server_socket.bind(('localhost', 55))
+server_socket.listen(1)
+print("Server listening on port 55...")
 
 while True:
         client_socket, client_address = server_socket.accept()
@@ -22,3 +21,4 @@ while True:
 
         client_socket.close()
         print(f"Connection with {client_address} closed")
+

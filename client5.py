@@ -1,8 +1,7 @@
 import socket
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-port=5004
-client_socket.connect(('localhost', port))
+client_socket.connect(('localhost', 55))
 
 filename = input("Enter the filename: ")
 client_socket.sendall(filename.encode('utf-8'))
