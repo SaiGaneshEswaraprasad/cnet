@@ -3,7 +3,7 @@ import socket
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 port=5004
 server_socket.bind(('localhost', port))
-server_socket.listen(1)
+server_socket.listen(5)
 print(f"Server listening on port {port}...")
 
 while True:
