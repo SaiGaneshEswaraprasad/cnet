@@ -30,7 +30,7 @@ def handle_client(client_socket, client_address):
 def start_server():
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     host = socket.gethostname()
-    port = 57
+    port = 5004
     server_socket.bind((host, port))
     server_socket.listen(5)
 
@@ -41,6 +41,5 @@ def start_server():
         client_handler = threading.Thread(target=handle_client, args=(client_socket, client_address))
         client_handler.start()
 
-if _name_ == "_main_":
-    os.makedirs("server_files", exist_ok=True)  # Create a folder to store server files
+if __name__ == "__main__":
     start_server()

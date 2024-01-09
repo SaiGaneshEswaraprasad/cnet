@@ -3,7 +3,7 @@ import socket
 def request_file_from_server(file_choice, port):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     host = socket.gethostname()
-    server_port = 57
+    server_port = 5004
     client_socket.connect((host, server_port))
 
     # Send the chosen file to the server
@@ -21,7 +21,7 @@ def request_file_from_server(file_choice, port):
     # Close the connection with the server
     client_socket.close()
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     # Get the client's port number
     client_port = int(input("Enter your port number: "))
 
