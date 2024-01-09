@@ -17,6 +17,7 @@ def request_file_from_server(file_choice, port):
     while received_data:
         print(received_data.decode(), end="")
         received_data = client_socket.recv(1024)
+    print(received_data)
 
     # Close the connection with the server
     client_socket.close()
@@ -26,7 +27,7 @@ if __name__ == "__main__":
     client_port = int(input("Enter your port number: "))
 
     # Get the file choice from the client
-    file_choice = input("Enter the name of the file you want to request (hi, hello, hola): ")
+    file_choice = input("Enter the name of the file you want to request : ")
 
     # Run the client with the chosen port number and file choice
     request_file_from_server(file_choice, client_port)
