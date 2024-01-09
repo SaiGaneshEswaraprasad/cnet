@@ -5,12 +5,12 @@ import os
 def handle_client(client_socket, client_address):
     print(f"Accepted connection from {client_address}")
 
-    # Receive requested file name from the client
-    requested_file = client_socket.recv(1024).decode()
-    print(f"Client {client_address} requested file: {requested_file}")
+    # Receive the client's file choice
+    file_choice = client_socket.recv(1024).decode()
+    print(f"Client {client_address} chose file: {file_choice}")
 
     # Check if the requested file exists
-    file_path = os.path.join("server_files", requested_file)
+    file_path = os.path.join("server_files", file_choice)
     if os.path.exists(file_path) and os.path.isfile(file_path):
         # Send the file to the client
         with open(file_path, 'rb') as file:
@@ -18,7 +18,7 @@ def handle_client(client_socket, client_address):
             while data:
                 client_socket.send(data)
                 data = file.read(1024)
-        print(f"File '{requested_file}' sent to {client_address}")
+        print(f"File '{file_choice}' sent to {client_address}")
     else:
         # Inform the client that the file does not exist
         client_socket.send(b"File not found")
@@ -42,4 +42,5 @@ def start_server():
         client_handler.start()
 
 if _name_ == "_main_":
+    os.makedirs("server_files", exist_ok=True)  # Create a folder to store server files
     start_server()

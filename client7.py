@@ -1,13 +1,16 @@
 import socket
 
-def request_file_from_server(file_name):
+def request_file_from_server(file_choice, port):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     host = socket.gethostname()
-    port = 57
-    client_socket.connect((host, port))
+    server_port = 57
+    client_socket.connect((host, server_port))
 
-    # Send the requested file name to the server
-    client_socket.send(file_name.encode())
+    # Send the chosen file to the server
+    client_socket.send(file_choice.encode())
+
+    # Print the port number of the client
+    print(f"Connected to server on port {port}")
 
     # Receive the file content from the server
     received_data = client_socket.recv(1024)
@@ -19,5 +22,11 @@ def request_file_from_server(file_name):
     client_socket.close()
 
 if _name_ == "_main_":
-    requested_file = input("Enter the name of the file you want to request: ")
-    request_file_from_server(requested_file)
+    # Get the client's port number
+    client_port = int(input("Enter your port number: "))
+
+    # Get the file choice from the client
+    file_choice = input("Enter the name of the file you want to request (hi, hello, hola): ")
+
+    # Run the client with the chosen port number and file choice
+    request_file_from_server(file_choice, client_port)
