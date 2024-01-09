@@ -17,7 +17,6 @@ def request_file_from_server(file_choice, port):
     while received_data:
         print(received_data.decode(), end="")
         received_data = client_socket.recv(1024)
-    print(received_data)
        # Define the client's save location
     save_location = r"/workspaces/cnet"
 
@@ -30,7 +29,6 @@ def request_file_from_server(file_choice, port):
             data = client_socket.recv(1024)
 
     print(f"File '{file_choice}' successfully saved at: {received_file_path}")
-
 
     # Close the connection with the server
     client_socket.close()

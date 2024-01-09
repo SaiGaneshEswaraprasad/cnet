@@ -10,7 +10,7 @@ def handle_client(client_socket, client_address):
     print(f"Client {client_address} chose file: {file_choice}")
 
     # Check if the requested file exists
-    file_path = os.path.join("server_files", file_choice)
+    file_path = file_choice
     if os.path.exists(file_path) and os.path.isfile(file_path):
         # Send the file to the client
         with open(file_path, 'rb') as file:
