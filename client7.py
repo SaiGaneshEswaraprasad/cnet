@@ -1,5 +1,5 @@
 import socket
-
+import os
 def request_file_from_server(file_choice, port):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     host = socket.gethostname()
@@ -18,6 +18,19 @@ def request_file_from_server(file_choice, port):
         print(received_data.decode(), end="")
         received_data = client_socket.recv(1024)
     print(received_data)
+       # Define the client's save location
+    save_location = r"/workspaces/cnet"
+
+    # Save the received file at the specified location
+    received_file_path = os.path.join(save_location, f"{file_choice}_received.txt")
+    with open(received_file_path, 'wb') as file:
+        data = client_socket.recv(1024)
+        while data:
+            file.write(data)
+            data = client_socket.recv(1024)
+
+    print(f"File '{file_choice}' successfully saved at: {received_file_path}")
+
 
     # Close the connection with the server
     client_socket.close()
