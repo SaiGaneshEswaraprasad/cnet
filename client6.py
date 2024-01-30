@@ -13,7 +13,8 @@ def receive_file(client_socket):
 
 def main():
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client_socket.connect(('localhost', 56))  # Connect to localhost on port 56
+    port=56
+    client_socket.connect(('localhost', port))  # Connect to localhost on port 56
 
     # Request and receive file from the server
     receive_file(client_socket)

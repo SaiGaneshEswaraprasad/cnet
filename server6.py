@@ -16,10 +16,11 @@ def serve_client(client_socket):
 
 def main():
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind(('localhost', 56))
+    port=56
+    server_socket.bind(('localhost', port))
     server_socket.listen(10)  # Listen for one incoming connection at a time
 
-    print("Server listening on port 56")
+    print(f"Server listening on port {port}")
 
     while True:
         # Wait for a connection from the client
