@@ -1,7 +1,8 @@
 import socket
 
 def main():
-    server_address = ('localhost', 59)
+    port=5004
+    server_address = ('localhost', port)
 
     file_name = input("Enter the file name to request: ")
 
