@@ -16,7 +16,7 @@ def serve_client(client_socket):
 
 def main():
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    port=56
+    port=5004
     server_socket.bind(('localhost', port))
     server_socket.listen(10)  # Listen for one incoming connection at a time
 
